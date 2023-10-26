@@ -17,5 +17,19 @@
         android:id="@+id/secondFragment"
         android:name="ja.ac.it_college.std.s22022.navigationsample.fragment.SecondFragment"
         android:label="fragment_second"
-        tools:layout="@layout/fragment_second" />
+        tools:layout="@layout/fragment_second" >
+        <action
+            android:id="@+id/action_secondFragment_to_thirdFragment"
+            app:destination="@id/thirdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="ja.ac.it_college.std.s22022.navigationsample.fragment.ThirdFragment"
+        android:label="fragment_third"
+        tools:layout="@layout/fragment_third" >
+        <argument
+            android:name="choice"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>
