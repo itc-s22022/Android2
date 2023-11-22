@@ -15,12 +15,15 @@ import kotlinx.serialization.json.Json
  */
 object Client {
     /**ベースURL*/
-    private const val BASE_URL = ""
-    /** Ktor Client*/
-    private val Ktor = HttpClient(CIO) {
+    private const val BASE_URL = "https://pokeapi.co/api/v2/"
+
+    /** Ktor Client */
+    private val ktor = HttpClient(CIO) {
         engine {
             endpoint {
-                connectTimeout
+                connectTimeout = 5000
+                requestTimeout = 5000
+                socketTimeout = 5000
             }
         }
         install(ContentNegotiation) {
@@ -34,5 +37,5 @@ object Client {
     }
 
     suspend fun get(endpoint: String) =
-        Ktor.get { url("$BASE_URL$endpoint") }
+        ktor.get { url("$BASE_URL$endpoint") }
 }

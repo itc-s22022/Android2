@@ -7,6 +7,6 @@ import kotlinx.serialization.Serializable
 data class Generation(
     val id: Int,
     val name: String,
-    val names: List<String>,
+    val names: List<Name>,
     @SerialName("pokemon_species") val pokemonSpecies: List<NamedAPIResource>
 )

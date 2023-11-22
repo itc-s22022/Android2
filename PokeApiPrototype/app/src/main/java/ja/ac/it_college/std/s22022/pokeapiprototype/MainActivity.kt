@@ -2,10 +2,13 @@ package ja.ac.it_college.std.s22022.pokeapiprototype
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
+import ja.ac.it_college.std.s22022.pokeapiprototype.api.GamesGroup
+import ja.ac.it_college.std.s22022.pokeapiprototype.api.PokemonGroup
 import ja.ac.it_college.std.s22022.pokeapiprototype.database.PokeRoomDatabase
 import ja.ac.it_college.std.s22022.pokeapiprototype.database.entity.Poke
 import ja.ac.it_college.std.s22022.pokeapiprototype.ui.theme.PokemonQuizTheme
@@ -24,7 +27,10 @@ class MainActivity : ComponentActivity() {
 
             // テストのダミーデータ取得
             scope.launch {
-                testDataInitializeDatabase(context)
+//                testDataInitializeDatabase(context)
+                val generation = GamesGroup.getGeneration(9)
+                val pamo = PokemonGroup.getPokemonSpecies(generation.pokemonSpecies[0])
+                Log.d("PokeAPI", PokemonGroup.getPokemon(pamo.varieties[0].pokemon).toString())
             }
             PokemonQuizTheme {
                 PokeNavigation()
